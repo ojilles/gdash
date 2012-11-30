@@ -21,6 +21,7 @@
                 <% if graph[:graphite][:description] %>
                     <a name='<%= u graph[:graphite][:title] %>' href='<%= [@prefix, params[:category], @params[:dash], 'details', i].join "/" %>'>
                     <img src='<%= [@top_level[@params[:category]].graphite_render, graph[:graphite][:url]].join "?" %>' rel="<%= row == 1 ? 'popover-below' : 'popover-above' %>" title="<%= graph[:graphite][:title] %>" data-content="<%= graph[:graphite][:description] %>"></a>
+		<a href="<%= @top_level[@params[:category]].graphite_render.gsub(/render\//, '') %>?<%= graph[:graphite][:url].gsub(/%22/, "\'").gsub(/%25/, "") %>" target="_blank">.</a>
                 <% else %>
                     <a href='<%= [@prefix, params[:category], @params[:dash], 'details', i].join "/" %>'>
                     <img src='<%= [@top_level[@params[:category]].graphite_render, graph[:graphite][:url]].join "?" %>'></a>
